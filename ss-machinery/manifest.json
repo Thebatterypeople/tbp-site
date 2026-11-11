@@ -1,0 +1,143 @@
+{
+ "HM370T": {
+  "spin": [
+   "spin/00.webp",
+   "spin/01.webp",
+   "spin/02.webp",
+   "spin/03.webp",
+   "spin/04.webp",
+   "spin/05.webp"
+  ],
+  "angles": [
+   "angles/01_rear_controls_engine_white_2000.jpg",
+   "angles/02_profile_right_bucket_down_white_2000.jpg",
+   "angles/03_threequarter_front_right_white_2000.jpg",
+   "angles/04_front_bucket_raised_white_2000.jpg",
+   "angles/05_front_bucket_down_white_2000.jpg",
+   "angles/06_profile_left_bucket_down_white_2000.jpg",
+   "angles/07_profile_left_bucket_raised_white_2000.jpg",
+   "angles/08_threequarter_front_left_HERO_white_2000.jpg",
+   "angles/09_threequarter_front_left_alt_white_2000.jpg"
+  ],
+  "hero_tile": "hero_tile.jpg",
+  "hero_cutout": "hero_cutout.webp"
+ },
+ "HM380T": {
+  "spin": [
+   "spin/00.webp",
+   "spin/01.webp",
+   "spin/02.webp",
+   "spin/03.webp",
+   "spin/04.webp",
+   "spin/05.webp"
+  ],
+  "angles": [
+   "angles/01_profile_right_auger_white_2000.jpg",
+   "angles/01_threequarter_front_right_auger_wide_white_2000.jpg",
+   "angles/02_threequarter_front_right_auger_white_2000.jpg",
+   "angles/03_threequarter_front_right_tight_HERO_white_2000.jpg",
+   "angles/04_front_auger_white_2000.jpg",
+   "angles/05_threequarter_front_left_auger_white_2000.jpg",
+   "angles/06_threequarter_front_left_tight_white_2000.jpg",
+   "angles/07_profile_left_auger_white_2000.jpg",
+   "angles/08_rear_controls_white_2000.jpg"
+  ],
+  "hero_tile": "hero_tile.jpg",
+  "hero_cutout": "hero_cutout.webp"
+ },
+ "HM750T": {
+  "spin": [
+   "spin/00.webp",
+   "spin/01.webp",
+   "spin/02.webp",
+   "spin/03.webp",
+   "spin/04.webp",
+   "spin/05.webp"
+  ],
+  "angles": [
+   "angles/01_rear_engine_white_2000.jpg",
+   "angles/02_profile_right_tight_white_2000.jpg",
+   "angles/03_profile_right_white_2000.jpg",
+   "angles/04_profile_left_white_2000.jpg",
+   "angles/05_threequarter_front_left_white_2000.jpg",
+   "angles/06_threequarter_front_right_HERO_white_2000.jpg",
+   "angles/07_threequarter_front_right_alt_white_2000.jpg",
+   "angles/08_front_bucket_down_white_2000.jpg",
+   "angles/09_threequarter_front_left_tight_white_2000.jpg"
+  ],
+  "hero_tile": "hero_tile.jpg",
+  "hero_cutout": "hero_cutout.webp"
+ },
+ "HM1000T": {
+  "spin": [
+   "spin/00.webp",
+   "spin/01.webp",
+   "spin/02.webp",
+   "spin/03.webp",
+   "spin/04.webp",
+   "spin/05.webp"
+  ],
+  "angles": [
+   "angles/01_rear_engine_white_2000.jpg",
+   "angles/02_profile_right_white_2000.jpg",
+   "angles/03_threequarter_front_right_white_2000.jpg",
+   "angles/04_threequarter_front_right_tight_HERO_white_2000.jpg",
+   "angles/05_front_bucket_down_white_2000.jpg",
+   "angles/06_threequarter_front_left_white_2000.jpg",
+   "angles/07_profile_left_white_2000.jpg",
+   "angles/08_profile_left_tight_white_2000.jpg"
+  ],
+  "hero_tile": "hero_tile.jpg",
+  "hero_cutout": "hero_cutout.webp"
+ },
+ "HM1500S": {
+  "spin": [
+   "spin/00.webp",
+   "spin/01.webp",
+   "spin/02.webp",
+   "spin/03.webp",
+   "spin/04.webp",
+   "spin/05.webp",
+   "spin/06.webp",
+   "spin/07.webp",
+   "spin/08.webp"
+  ],
+  "angles": [
+   "angles/01_profile_right_rear_white_2000.jpg",
+   "angles/02_rear_threequarter_white_2000.jpg",
+   "angles/03_rear_straight_white_2000.jpg",
+   "angles/04_rear_threequarter_left_white_2000.jpg",
+   "angles/05_profile_left_white_2000.jpg",
+   "angles/06_front_threequarter_left_white_2000.jpg",
+   "angles/07_front_straight_white_2000.jpg",
+   "angles/08_front_threequarter_right_HERO_white_2000.jpg",
+   "angles/09_profile_left_full_white_2000.jpg"
+  ],
+  "hero_tile": "hero_tile.jpg",
+  "hero_cutout": "hero_cutout.webp"
+ },
+ "HME30T": {
+  "spin": [
+   "spin/00.webp",
+   "spin/01.webp",
+   "spin/02.webp",
+   "spin/03.webp",
+   "spin/04.webp",
+   "spin/05.webp",
+   "spin/06.webp"
+  ],
+  "angles": [
+   "angles/01_front_straight_boom_forward_white_2000.jpg",
+   "angles/02_front_threequarter_right_white_2000.jpg",
+   "angles/03_profile_right_white_2000.jpg",
+   "angles/04_front_threequarter_left_boom_raised_HERO_white_2000.jpg",
+   "angles/05_front_threequarter_left_boom_raised_alt_white_2000.jpg",
+   "angles/06_profile_left_cab_white_2000.jpg",
+   "angles/07_rear_threequarter_left_cab_white_2000.jpg",
+   "angles/08_rear_straight_white_2000.jpg",
+   "angles/09_rear_threequarter_right_white_2000.jpg"
+  ],
+  "hero_tile": "hero_tile.jpg",
+  "hero_cutout": "hero_cutout.webp"
+ }
+}
