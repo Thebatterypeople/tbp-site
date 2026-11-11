@@ -63,12 +63,12 @@ a{color:inherit}
 .spin .arr.l{left:-4px}.spin .arr.r{right:-4px}
 .spin .badge{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-family:"Barlow Condensed";font-weight:700;font-size:13px;letter-spacing:.14em;padding:5px 9px;text-transform:uppercase}
 /* viewer tabs + 3D */
-.viewer{position:relative;max-width:620px;margin:0 auto}
+.viewer{position:relative;width:100%;max-width:620px;margin:0 auto;min-width:0}
 .vtabs{display:flex;gap:6px;justify-content:center;margin-bottom:8px}
 .vtabs button{font-family:"Barlow Condensed";font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:#ccc;background:transparent;border:1px solid #444;padding:7px 14px;border-radius:3px;cursor:pointer}
 .vtabs button.on{background:var(--red);border-color:var(--red);color:#fff}
-.mv3d{position:relative;aspect-ratio:1/1}
-.mv3d model-viewer{width:100%;height:100%;--poster-color:transparent;background:radial-gradient(ellipse at 50% 45%,#2a2a2a,#161616 70%);border-radius:6px}
+.mv3d{position:relative;width:100%;aspect-ratio:1/1;min-height:320px}
+.mv3d model-viewer{display:block;width:100%;height:100%;--poster-color:transparent;background:radial-gradient(ellipse at 50% 45%,#2a2a2a,#161616 70%);border-radius:6px}
 .mv3d .badge{position:absolute;top:8px;left:8px;z-index:2;background:var(--red);color:#fff;font-family:"Barlow Condensed";font-weight:700;font-size:13px;letter-spacing:.14em;padding:5px 9px;text-transform:uppercase}
 .mv3d .hint{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);font-family:"Barlow Condensed";font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#aaa;white-space:nowrap}
 .mv3d .hint b{color:#fff}
