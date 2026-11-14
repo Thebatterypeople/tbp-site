@@ -225,7 +225,7 @@ def hire():
 <section id="book"><div class="wrap"><h2>Book a <i>hire</i></h2><p class="lead">Tell us the machine, where it is going and the dates. We confirm availability and the rate within one business day; same-day hires by phone.</p>
 <div class="formcard" style="margin-top:18px"><div id="hireform"></div></div></div></section>
 {cta("Prefer to talk?", "Call the yard and we will sort it on the phone.")}'''
-    scripts = f'<script type="module">import {{mountForm}} from "/assets/form-page.js";var p=new URLSearchParams(location.search).get("m");mountForm(document.getElementById("hireform"),"{FORMS["hire"]}",{{preselect:p,wide:/notes|suburb/i}});</script>'
+    scripts = f'<script type="module">import {{mountForm}} from "/assets/form-page.js";var p=new URLSearchParams(location.search).get("m");mountForm(document.getElementById("hireform"),"hire",{{preselect:p}});</script>'
     page('hire.html', 'Machinery hire rates — mini loaders, skid steer, excavator | S&S Machinery Hallam',
          'Hire the HM 380T mini loader from $220 a day or the HM 1500S skid steer from $320 a day (ex GST). Delivery across Melbourne\'s south-east from Hallam. Book online or call 0466 892 400.', body, 'hire.html', scripts=scripts)
 
@@ -268,7 +268,7 @@ def contact():
     body = f'''<div class="pband"><div class="wrap"><h1>Get in touch</h1><p>Ready to get a machine on site? Tell us the job and we will find the right fit — to hire or to own.</p></div></div>
 <section class="alt"><div class="wrap"><div class="contact-grid"><div class="card"><div class="kv"><div><div class="k">Phone</div><div class="v"><a href="tel:{B["phone_tel"]}">{B["phone"]}</a></div></div><div><div class="k">Email</div><div class="v"><a href="mailto:{B["email"]}">{B["email"]}</a></div></div><div><div class="k">Yard &amp; workshop</div><div class="v">Factory 5, 65-67 Hallam South Road<br>Hallam VIC 3803</div></div>{hours}</div><div class="btns" style="margin-top:20px"><a class="btn dark" href="https://maps.google.com/?q=65-67+Hallam+South+Road+Hallam+VIC+3803" target="_blank" rel="noopener">Open in Maps</a></div></div>
 <div class="formcard"><h2 style="font-size:30px;margin-bottom:14px">Send an <i>enquiry</i></h2><div id="contactform"></div></div></div></div></section>'''
-    scripts = f'<script type="module">import {{mountForm}} from "/assets/form-page.js";var p=new URLSearchParams(location.search).get("m");mountForm(document.getElementById("contactform"),"{FORMS["contact"]}",{{preselect:p,wide:/message/i}});</script>'
+    scripts = f'<script type="module">import {{mountForm}} from "/assets/form-page.js";var p=new URLSearchParams(location.search).get("m");mountForm(document.getElementById("contactform"),"contact",{{preselect:p}});</script>'
     page('contact.html', 'Contact S&S Machinery — Hallam VIC | 0466 892 400',
          'Contact S&S Machinery at Factory 5, 65-67 Hallam South Road, Hallam VIC 3803. Phone 0466 892 400, sales@sandsmachinery.com.au. Open Mon–Fri 7–5, Sat 8–12.', body, 'contact.html', scripts=scripts)
 
@@ -299,7 +299,7 @@ def rewrite_machine_shells():
 
 def main():
     open(f'{OUT}/assets/site.css', 'w').write(BASE_CSS + EXTRA_CSS)
-    open(f'{OUT}/assets/form-page.js', 'w').write(FORM_JS)
+    pass  # form-page.js is maintained directly in site/assets (Web3Forms relay)
     home(); machines(); hire(); attachments(); service(); about(); contact(); terms()
     rewrite_machine_shells()
     # render.js: point CTAs at new pages with machine preselect
