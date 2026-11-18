@@ -1,0 +1,47 @@
+# S&S Machinery: copies the Modern DMS website stock feed into the ss-stock
+# branch every 30 minutes, for sandsmachinery.com.au/stock.html.
+# Needs the repository secret MDMS_FEED_URL (MDMS > Admin > Data > Stock feed).
+name: S&S stock feed sync
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ss-stock-feed
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+          sparse-checkout: .github/scripts
+
+      - name: Check out the ss-stock branch (create it on first run)
+        run: |
+          if git ls-remote --exit-code --heads "https://github.com/${GITHUB_REPOSITORY}" ss-stock >/dev/null; then
+            git clone --depth 1 --branch ss-stock "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}" out
+          else
+            mkdir out && cd out && git init -q -b ss-stock
+            git remote add origin "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}"
+          fi
+
+      - name: Read the feed
+        env:
+          MDMS_FEED_URL: ${{ secrets.MDMS_FEED_URL }}
+        run: python3 src/.github/scripts/ss_stock_feed.py out
+
+      - name: Publish changes
+        working-directory: out
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing to publish"; exit 0; fi
+          git -c user.name="S&S stock sync" -c user.email="actions@github.com" commit -q -m "Stock feed update"
+          git push origin ss-stock
