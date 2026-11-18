@@ -1,7 +1,7 @@
 """Single source of truth for S&S machine content (pages + listing pack)."""
 
 BUSINESS = dict(
-    name='S&S Machinery', legal='Sayed and Sons Machinery Sales and Hire',
+    name='S&S Machinery', legal='Sayed and Sons Transport Pty Ltd trading as S&S Machinery',
     phone='0466 892 400', phone_tel='+61466892400', email='sales@sandsmachinery.com.au',
     web='sandsmachinery.com.au', site='https://www.sandsmachinery.com.au',
     address='Factory 5, 65-67 Hallam South Road, Hallam VIC 3803',
