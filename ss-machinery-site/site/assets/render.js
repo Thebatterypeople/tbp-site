@@ -1,7 +1,7 @@
 
 (function(){
   var slug=document.body.getAttribute('data-machine'),m=window.SS_MACHINES[slug],B=window.SS_BIZ;if(!m)return;
-  var GLB={"HM370T":"e98477_f4b6968ced7b4573bc7e8ab773dbdff4","HM380T":"e98477_3452a9f3ba9f4bfeb938cdb164134566","HM750T":"e98477_882a220774c34b80a96096a6880dd4e1","HM1000T":"e98477_c01c7a6781e44fd4bb360d4dec47439b","HM1500S":"e98477_895967eb2e2f49959ce882a48e0aae91","HME30T":"e98477_a48548fc3e454be3b4e6402653512489"};
+  var GLB={"HM370T":"e98477_f4b6968ced7b4573bc7e8ab773dbdff4","HM750T":"e98477_882a220774c34b80a96096a6880dd4e1","HM1000T":"e98477_c01c7a6781e44fd4bb360d4dec47439b","HM1500S":"e98477_895967eb2e2f49959ce882a48e0aae91","HME30T":"e98477_a48548fc3e454be3b4e6402653512489"};
   var M='https://static.wixstatic.com/media/';function full(id){return M+id}function th(id){return M+id+'/v1/fill/w_520,h_520,al_c,q_80,enc_auto/'+id.split('~')[0]+'.jpg'}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   var h='';
@@ -10,7 +10,7 @@
     +'<div class="pricebox"><div><div class="from">Buy from</div><div class="amt">'+esc(m.price)+'</div></div><div class="inc">'+esc(m.price_note)+'</div></div>'
     +'<div class="btns"><a class="btn red" href="../contact.html?m='+encodeURIComponent(m.name)+'">Enquire to buy</a><a class="btn ghost" href="../hire.html?m='+encodeURIComponent(m.name)+'#book">Book a hire</a><a class="btn ghost" href="tel:'+B.tel+'">Call '+B.phone+'</a></div>'
     +'<div class="assure"><span>'+esc(B.warranty)+'</span><span>'+esc(B.services)+'</span><span>In stock at Hallam</span></div></div>'
-    +'<div class="viewer"><div class="vtabs"><button class="on" data-v="spin">360° photos</button><button data-v="3d">3D model</button></div><div class="spin"><div class="badge">360° view</div><div class="floor"></div>'
+    +'<div class="viewer">'+(GLB[m.key]?'<div class="vtabs"><button class="on" data-v="spin">360° photos</button><button data-v="3d">3D model</button></div>':'')+'<div class="spin"><div class="badge">360° view</div><div class="floor"></div>'
     +m.spin.map(function(u,j){return '<img src="'+full(u)+'" alt="'+esc(m.name)+' view '+(j+1)+'"'+(j?'':' class="on"')+'>'}).join('')
     +'<div class="arr l">&#8249;</div><div class="arr r">&#8250;</div><div class="hint"><b>Drag</b> to rotate</div></div><div class="mv3d" hidden><div class="badge">3D model</div><div class="hint"><b>Drag</b> to orbit · pinch or scroll to zoom</div></div></div></div></div></div>';
   h+='<section><div class="wrap"><div class="two"><div><h2>Built for <i>the job</i></h2><p class="lead">'+esc(m.blurb)+'</p><ul class="ticks">'
