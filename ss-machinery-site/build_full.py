@@ -10,10 +10,39 @@ HIRE_RATES = {  # ex GST, from the current site
     'HM370T': ('POA', 'POA', 'POA'), 'HM750T': ('POA', 'POA', 'POA'), 'HM1000T': ('POA', 'POA', 'POA'), 'HME30T': ('POA', 'POA', 'POA'),
 }
 HOURS = [('Monday to Friday', '7:00 am – 5:00 pm'), ('Saturday', '8:00 am – 12:00 pm'), ('Sunday', 'Closed')]
-NAV = [('Home', 'index.html'), ('Machines', 'machines.html'), ('Hire', 'hire.html'), ('Attachments', 'attachments.html'),
+NAV = [('Home', 'index.html'), ('Machines', 'machines.html'), ('In stock', 'stock.html'), ('Hire', 'hire.html'), ('Attachments', 'attachments.html'),
        ('Service', 'service.html'), ('About', 'about.html'), ('Contact', 'contact.html'), ('Hire terms', 'hire-terms.html')]
 
 EXTRA_CSS = r"""
+
+.nav .links a{white-space:nowrap}
+@media(max-width:1180px){.nav .wrap{gap:18px}.nav .links{gap:14px;font-size:16px}}
+@media(max-width:1020px){.nav .links a[href$="hire-terms.html"]{display:none}}
+/* live stock (MDMS feed) */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.scard{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.scard .img{aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center;cursor:zoom-in;position:relative;border-bottom:1px solid var(--line)}
+.scard .img img{width:100%;height:100%;object-fit:contain}
+.scard .img .n{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;font-size:12px;padding:3px 8px;border-radius:3px}
+.scard .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.scard .t{font-family:"Barlow Condensed";font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.scard h3{font-size:30px;font-weight:800;margin:0}
+.scard .p{font-family:"Barlow Condensed";font-weight:800;font-size:26px;color:var(--red)}
+.scard .p small{font-family:Barlow;font-weight:400;font-size:13px;color:var(--muted);margin-left:6px}
+.scard .meta{display:flex;flex-wrap:wrap;gap:6px;font-size:13px}
+.scard .meta span{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:2px 8px}
+.scard .meta .ok{background:#e9f7ee;border-color:#bfe5cc;color:#16653a}
+.scard .meta .res{background:#fff4e0;border-color:#f3d39a;color:#8a5a00}
+.scard .d{font-size:14.5px;color:#444}
+.scard .btns{margin-top:auto;padding-top:8px;gap:8px}
+.scard .btn{padding:9px 14px;font-size:15px}
+.btn.ghost-dark{background:transparent;color:#111;border:1px solid #bbb}
+.stock-note{color:var(--muted);font-size:14px;margin:0 0 18px}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;align-items:center;justify-content:center}
+.lbx.on{display:flex}.lbx img{max-width:92vw;max-height:84vh;background:#fff}
+.lbx button{position:absolute;background:none;border:0;color:#fff;font-size:42px;cursor:pointer;padding:10px 18px}
+.lbx .x{top:8px;right:10px}.lbx .pv{left:6px}.lbx .nx{right:6px}
+.lbx .c{position:absolute;bottom:14px;color:#ccc;font-size:14px}
 /* home */
 .home-hero{background:radial-gradient(ellipse at 70% 60%,#2c2c2c 0%,#131313 65%);color:#fff;padding:56px 0 0;overflow:hidden}
 .home-hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:end}
@@ -205,10 +234,25 @@ def home():
 
 def machines():
     body = f'''<div class="pband"><div class="wrap"><h1>The range</h1><p>Six machine types available for instant hire or sale, with 80+ machines across our in-stock line-up. Hire by the day or week, or own one outright. Every machine sold comes with a 5 year / 200 hour warranty and the first three services free. Open each machine for the 360° spin, the 3D model and full specifications.</p></div></div>
-<section class="alt"><div class="wrap">{machine_cards()}</div></section>
+<section class="alt"><div class="wrap"><p class="stock-note"><a class="btn dark" href="stock.html">See what is in stock now</a></p>{machine_cards()}</div></section>
 {cta("Not sure which one?", "Tell us the job and we will match the machine.")}'''
     page('machines.html', 'Machines for sale & hire — mini loaders, skid steer, excavator | S&S Machinery Hallam',
          'S&S Machinery range: HM 370T, HM 380T, HM 750T and HM 1000T stand-on mini loaders, HM 1500S skid steer and HME 30T excavator. Buy or hire from Hallam, Victoria. 5 year / 200 hour warranty, first 3 services free.', body, 'machines.html')
+
+
+STOCK_RAW = 'https://raw.githubusercontent.com/Thebatterypeople/tbp-site/ss-stock/'
+
+
+def stock():
+    models = {m['key']: {'slug': m['slug'], 'cut': MEDIA[f'{m["key"]}/hero_cutout.webp']} for m in MACHINES}
+    body = f"""<div class="pband"><div class="wrap"><h1>In stock now</h1><p>Every machine currently in our yard at Hallam, straight from our stock system. Prices include GST. Every machine sold comes with a 5 year / 200 hour warranty and the first three services free.</p></div></div>
+<section class="alt"><div class="wrap"><p class="stock-note" id="stock-note">Loading current stock…</p><div class="sgrid" id="stock-grid"></div></div></section>
+<div class="lbx" id="lbx"><button class="x" aria-label="Close">&times;</button><button class="pv" aria-label="Previous">&#8249;</button><img alt=""><button class="nx" aria-label="Next">&#8250;</button><div class="c"></div></div>
+{cta("Want one?", "Call us, send an enquiry, or come and see the machines at Hallam.")}"""
+    js = ("<script>window.SS_STOCK={raw:" + json.dumps(STOCK_RAW) + ",models:" + json.dumps(models) +
+          ",phone:" + json.dumps(B['phone']) + ",tel:" + json.dumps(B['phone_tel']) + "};</script><script src=\"assets/stock.js\"></script>")
+    page('stock.html', 'Machines in stock now | S&S Machinery Hallam',
+         'Live list of the new mini loaders, skid steers, excavators and equipment in stock at S&S Machinery, Hallam VIC, with prices inc GST.', body, 'stock.html', scripts=js)
 
 
 def hire():
@@ -300,7 +344,7 @@ def rewrite_machine_shells():
 def main():
     open(f'{OUT}/assets/site.css', 'w').write(BASE_CSS + EXTRA_CSS)
     pass  # form-page.js is maintained directly in site/assets (Web3Forms relay)
-    home(); machines(); hire(); attachments(); service(); about(); contact(); terms()
+    home(); machines(); stock(); hire(); attachments(); service(); about(); contact(); terms()
     rewrite_machine_shells()
     # render.js: point CTAs at new pages with machine preselect
     r = open(f'{OUT}/assets/render.js').read()
