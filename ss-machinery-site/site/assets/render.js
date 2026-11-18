@@ -1,7 +1,7 @@
 
 (function(){
   var slug=document.body.getAttribute('data-machine'),m=window.SS_MACHINES[slug],B=window.SS_BIZ;if(!m)return;
-  var GLB={"HM370T":"e98477_f4b6968ced7b4573bc7e8ab773dbdff4","HM750T":"e98477_882a220774c34b80a96096a6880dd4e1","HM1000T":"e98477_c01c7a6781e44fd4bb360d4dec47439b","HM1500S":"e98477_895967eb2e2f49959ce882a48e0aae91","HME30T":"e98477_a48548fc3e454be3b4e6402653512489"};
+  var GLB={"HM370T":"e98477_f4b6968ced7b4573bc7e8ab773dbdff4","HM380T":"e98477_e0db26518d374d20a02f7d4574b0a0f0","HM750T":"e98477_882a220774c34b80a96096a6880dd4e1","HM1000T":"e98477_c01c7a6781e44fd4bb360d4dec47439b","HM1500S":"e98477_895967eb2e2f49959ce882a48e0aae91","HME30T":"e98477_a48548fc3e454be3b4e6402653512489"};
   var M='https://static.wixstatic.com/media/';function full(id){return M+id}function th(id){return M+id+'/v1/fill/w_520,h_520,al_c,q_80,enc_auto/'+id.split('~')[0]+'.jpg'}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   var h='';
