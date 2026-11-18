@@ -190,7 +190,7 @@ def home():
 <p>Mini loaders, a skid steer and a 2.8 tonne excavator to hire by the day or week, or to own outright. Delivered from Hallam and backed by our own workshop, a 5 year / 200 hour warranty and three free services on every machine sold.</p>
 <div class="btns"><a class="btn red" href="machines.html">See the machines</a><a class="btn ghost" href="hire.html">Book a hire</a></div></div>
 <div class="pic"><img src="{hero_cut}" alt="HM 1500S skid steer"></div></div></div>
-<div class="stats"><div class="wrap"><div><b>6</b><span>machines in stock at Hallam</span></div><div><b>5 yr / 200 hr</b><span>warranty on every sale</span></div><div><b>3 free</b><span>services in our workshop</span></div><div><b>From $120</b><span>delivery across the south-east</span></div></div></div></div>
+<div class="stats"><div class="wrap"><div><b>6 types</b><span>for instant hire or sale &middot; 80+ machines across our in-stock line-up</span></div><div><b>5 yr / 200 hr</b><span>warranty on every sale</span></div><div><b>3 free</b><span>services in our workshop</span></div><div><b>From $120</b><span>delivery across the south-east</span></div></div></div></div>
 <section class="alt"><div class="wrap"><h2>The <i>range</i></h2>{machine_cards()}</div></section>
 <section><div class="wrap"><h2>Hire it. <i>Own it.</i></h2><div class="split">
 <div class="panel"><h3>Hire</h3><p>Day, weekend and weekly rates. Fuel full on pick-up, induction included, delivered to site or collect from Hallam. Attachments available on the same hire.</p><a class="btn red" href="hire.html">Hire rates &amp; booking</a></div>
@@ -204,7 +204,7 @@ def home():
 
 
 def machines():
-    body = f'''<div class="pband"><div class="wrap"><h1>The range</h1><p>Six machines, every one in stock at Hallam and available to hire by the day or week or to own outright. Every machine sold comes with a 5 year / 200 hour warranty and the first three services free. Open each machine for the 360° spin, the 3D model and full specifications.</p></div></div>
+    body = f'''<div class="pband"><div class="wrap"><h1>The range</h1><p>Six machine types available for instant hire or sale, with 80+ machines across our in-stock line-up. Hire by the day or week, or own one outright. Every machine sold comes with a 5 year / 200 hour warranty and the first three services free. Open each machine for the 360° spin, the 3D model and full specifications.</p></div></div>
 <section class="alt"><div class="wrap">{machine_cards()}</div></section>
 {cta("Not sure which one?", "Tell us the job and we will match the machine.")}'''
     page('machines.html', 'Machines for sale & hire — mini loaders, skid steer, excavator | S&S Machinery Hallam',
